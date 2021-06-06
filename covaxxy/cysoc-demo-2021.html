@@ -1,0 +1,431 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            .error {
+                color: red;
+            }
+        </style>
+
+        <!-- doc description -->
+        <meta charset="utf-8">
+        <title>CoVaxxy Demo</title>
+        <meta name="description" content="A project seeking to visualize the relationship between vaccine adoption and (mis)information">
+        <meta name="author" content="Matthew R. DeVerna">
+
+        <!-- mobile stuff -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Reveal.js style sheet -->
+        <link rel="stylesheet" href="dist/reset.css">
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/white.css">
+        <!-- <link rel="stylesheet" href="dist/theme/serif.css"> -->
+        <!-- <link rel="stylesheet" href="dist/theme/black.css"> -->
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+        
+        <!-- Include vegalite stuff for figure creation -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+    </head>
+    <body>
+
+        <!-- BEGIN SLIDES -->
+        <div class="reveal">
+            <div class="slides"> 
+                
+                <!-- OPENINING SLIDE -->
+                <section class="r-fit-text"> 
+                    <h1>CoVaxxy</h1>
+                    <!-- <p style="font-size: 25px; color: #990000">An Observatory on Social Media Project</p> -->
+                    <!-- <a href="https://osome.iu.edu/about/people"> -->
+                        <img style="width: 300px;" src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/observatoryonsocialmedia_lockup_WEB_h1.png">
+
+                    <!-- </a> -->
+                    <p style="font-size: 12px">Presentation by: Matthew R. DeVerna</p>
+
+                    <!-- NOTES -->
+                    <aside class="notes">
+                        <ul>
+                            <li>Hi Everyone!</li>
+                            <li>My name is Matt DeVerna</li>
+                            <li>Thank you for coming to the CoVaxxy Demo</li>
+                            <li>CoVaxxy is an Observatory on Social Media Project</li>
+                            <li>Excited to take you through what we have today</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- WHAT'S IN STORE -->
+                <section data-background="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/covaxxy_screenshot.png" data-background-repeat="repeat" data-background-size="350px">
+                    <div style="position: absolute; width: 50%; right: 0; box-shadow: 0 1px 40px rgba(0,0,0,1), 0 5px 25px rgba(0,0,0,1); background-color: rgba(0, 0, 0, 1); color: #fff; padding: 20px; font-size: 25px; text-align: center;">
+
+                        <h4 style="color: #ffffff">What's in store for today...</h4>
+                        <p class="fragment fade-in-then-semi-out"> Checkout the <span style="color: orange">CoVaxxy dashboard</span> </p> 
+                        <p class="fragment fade-in-then-semi-out"> Cover some <span style="color: orange">preliminary results</span> </p> 
+                        <p class="fragment fade-in-then-semi-out"> Talk about the CoVaxxy <span style="color: orange">data</span> </p> 
+                    </div>
+
+                    <!-- NOTES -->
+                    <aside class="notes">
+                        <ul>
+                            <li>So let's talk about what we have in store for you today</li>
+                            <li>Demonstration of the CoVaxxy dashboard</li>
+                            <li>Preliminary results from work inspired by the dashboard</li>
+                            <li>Will end by covering the dataset briefly at the end</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- OPEN COVAXXY + DEMO NOTES -->
+                <section data-transition="slide" data-background="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/covaxxy_screenshot.png" data-background-transition="zoom">
+                    <div style="position: absolute; width: 50%; right: 0; box-shadow: 0 1px 40px rgba(0,0,0,1), 0 5px 25px rgba(0,0,0,1); background-color: rgba(0, 0, 0, 1); color: #fff; padding: 20px; font-size: 25px; text-align: center;">
+                        <!-- <p>We'll check out the CoVaxxy Dashboard...</p> -->
+                        <h4 style="color: #ffffff">So lets check out the dashboard!</h4>
+                        <p> <a href="https://osome.iu.edu/tools/covaxxy" target=_blank>https://osome.iu.edu/tools/covaxxy</a> </p>
+                    </div>
+
+                    <!-- NOTES -->
+                    <aside class="notes">
+                        <ul>
+                            <li>About the project</li>
+                                <ul>
+                                    <li>Started a COVID19/vaccines Twitter stream in early January</li>
+                                    <li>Details can be found here</li>
+                                        <ul>
+                                            <li>Data set paper + data set</li>
+                                            <li>Collaborators</li>
+                                            <li>VaccinItaly</li>
+                                        </ul>
+                                </ul>
+                            <li>General</li>
+                                <ul>
+                                    <li>Quick jump to visualizations</li>
+                                    <li>More info buttons</li>
+                                </ul>
+                            <li>Geography</li>
+                                <ul>
+                                    <li>Two data maps</li>
+                                    <li>Geo-locate Twitter users based on self-report</li>
+                                    <li>Vaccine data is reported at the state-level</li>
+                                </ul>
+                            <li>Correlations</li>
+                                <ul>
+                                    <li>Same data as above, in a scatter plot</li>
+                                    <li>When we hover over dots...</li>
+                                    <li>Alabama, Texas, Arkansas, Kentucky</li>
+                                </ul>
+                            <li>Hashtags</li>
+                                <ul>
+                                    <li>covidiots on the same level as pfiser & moderna</li>
+                                    <li>billgates</li>
+                                    <li>greatreset</li>
+                                    <li>covid19 for transparency/context</li>
+                                </ul>
+                            <li>Vaccine uptake</li>
+                                <ul>
+                                    <li>7-day smoothed total differences --> due to population size!</li>
+                                    <li>Percent distributed is a fairere comparision</li>
+                                    <li> Georgia is a bit lower --> lets check out their level of vaccine hesitancy</li>
+                                    <li>Alabama, Texas, Arkansas, Kentucky</li>
+                                    <li>Many other options to select from...</li>
+                                </ul>
+                            <li>Sources</li>
+                                <ul>
+                                    <li>Compare low-credibility and MAINSTREAM</li>
+                                    <li>When we hover over dots...</li>
+                                </ul>
+                            <li>Most shared sources</li>
+                                <ul>
+                                    <li>Leaderboard </li>
+                                    <li>Can see low-credibility sites that were popular in the past week </li>
+                                </ul>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- MAIN QUESTION -->
+                <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+                    <p>What is the relationship between misinformation and vaccine hesitancy?</p>
+                    <div class="r-hstack justify-center">
+                        <div class="fragment fade-up" data-id="box1" data-auto-animate-delay="0" style="background: orange; width: 250px; height: 80px; margin: 10px; text-align: center; vertical-align: middle; line-height: 80px;">Twitter</div>
+                        <div class="fragment fade-up" data-id="box2" data-auto-animate-delay="0.1" style="background: orange; width: 250px; height: 80px; margin: 10px; text-align: center; vertical-align: middle; line-height: 80px;">CDC</div>
+                        <div class="fragment fade-up" data-id="box3" data-auto-animate-delay="0.2" style="background: orange; width: 250px; height: 80px; margin: 10px; text-align: center; vertical-align: middle; line-height: 80px;">FB Survey</div>
+                    </div>
+                </section>
+
+                <!-- COMBINING DIFFERENT DATA SETS -->
+                <section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+                    <div class="r-stack">
+                        <div data-id="box1" style="background: orange; width: 300px; height: 300px; border-radius: 200px;">  </div>
+                        <div data-id="box3" style="background: orange; width: 100px; height: 100px; border-radius: 200px;">  </div>
+                        <div data-id="box2" style="background: orange; width: 200px; height: 200px; border-radius: 200px; padding-top: 30px; padding-left: 10px;"> Twitter + <br> CDC + <br> FB Survey </div>
+                    </div>
+                    <h4 style="margin-top: 20px;">Combine different data sets</h4>
+                </section>
+
+                <!-- STATE-LEVEL VACCINE UPTAKE -->
+                <section>
+
+                    <!-- INTRO -->
+                    <section>
+                        <p>State-level vaccine <em>uptake</em></p>
+                        <img src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/vaccine-uptake.jpg">
+
+                        <!-- NOTES -->
+                        <aside class="notes">
+                            <ul>
+                                <li>The first thing we did was combine CDC and TWITTER data</li>
+                                <li>to investigate STATE level vaccine uptake</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- DATA -->
+                    <section>
+                        <p>Misinformation negatively correlates with vaccinations on the ground</p>
+                        <div class="r-hstack justify-middle"> 
+                            <div>
+                                <img src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/state_vaccine_uptake_fig.png">
+                            </div>
+                            <div>
+                                <p class="fragment fade-up" data-auto-animate-delay="0.2" style="font-size: 25px">race</p>
+                                <p class="fragment fade-up" data-auto-animate-delay="0.2" style="font-size: 25px">age</p>
+                                <p class="fragment fade-up" data-auto-animate-delay="0.2" style="font-size: 25px">politics</p>
+                                <p class="fragment fade-up" data-auto-animate-delay="0.2" style="font-size: 25px">poverty</p>
+                                <p class="fragment fade-up" data-auto-animate-delay="0.2" style="font-size: 25px">rurality</p>
+                            </div>
+                        </div>
+
+                        <!-- NOTES -->
+                        <aside class="notes">
+                            <ul>
+                                <li>Explain graph</li>
+                                <li>Geo-locate users based on self-reporting location</li>
+                                <li>Control for race, age, politics, poverty, and rurality</li>
+                                <li>As misinformation goes up in a state, we see that the number of people who get vaccinated in that state generally goes down</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                </section>
+
+                <!-- STATE-LEVEL VACCINE HESITANCY -->
+                <section>
+
+                    <!-- INTRO -->
+                    <section>
+                        <p>State level-vaccine <em>hesitancy</em></p>
+                        <img src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/vaccine_hesitancy.jpg">
+
+                        <!-- NOTES -->
+                        <aside class="notes">
+                            <ul>
+                                <li>We can also look at <em>vaccine hesitancy</em> at the state-level using the Facebook Survey data</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- DATA -->
+                    <section>
+                        <p>Misinformation positively correlates with vaccine hesitancy</p>
+                        <img src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/state_vax_hesitancy_fig.png">
+
+                        <!-- NOTES -->
+                        <aside class="notes">
+                            <ul>
+                                <li>Explain graph</li>
+                                <li>Geo-location and controling factors are the same</li>
+                                <li>As misinformation goes up in a state, we see that the number of people who are hesitant to receive a vaccine also goes up</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+
+                <!-- COUNTY-LEVEL VACCINE HESITANCY -->
+                <section>
+
+                    <!-- INTRO -->
+                    <section>
+                        <p><u>County</u> level-vaccine <em>hesitancy</em></p>
+                        <img style="width: 600px; height: 400px;" src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/USNationalCountyBW.jpg">
+
+                        <!-- NOTES -->
+                        <aside class="notes">
+                            <ul>
+                                <li>We can break this down at the county-level as well</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- DATA -->
+                    <section>
+                        <p>Misinformation positively correlates with vaccine hesitancy</p>
+                        <img style="width: 600px; height: 500px; " src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/county_vax_hesitancy_fig.png">
+                    
+                        <!-- NOTES -->
+                        <aside class="notes">
+                            <ul>
+                                <li>explain the graph</li>
+                                <li>controlling for the same factors except, I believe, rurality because it doesn't exist at the county-level</li>
+                                <li>what these two lines tell us is that as the misinformation in a democratic county goes up, it becomes more like republican counties which are much more vaccine hesitant, on average</li>
+                            </ul>
+                        </aside>
+
+                    </section>
+                </section>
+
+                <!-- COVAXXY DATA SUMMARY -->
+                <section>
+
+                    <!-- INTRO -->
+                    <section>
+                        <p>Available Data</p>
+                        <img src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/data-pic3.jpg">
+
+                        <!-- NOTES -->
+                        <aside class="notes">
+                            <ul>
+                                <li>Now, i'd like to compress the content of our data set paper into one or two minutes</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- DATA -->
+                    <section>
+                        <h4>CoVaxxy Data</h4>
+                        <div class="r-hstack justify-middle">
+
+                            <!-- keywords image -->
+                            <div>
+                                <img class="fragment fade-up" data-auto-animate-delay="0.2" src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/keywords.png">
+                            </div>
+
+                            <!-- keywords image -->
+                            <div style="padding: 100px;">
+                                <div class="fragment fade-up" data-auto-animate-delay="0.2">
+                                    <img src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/twitter_icon.png">
+                                    <p style="font-size: 15px";>Real-time data collection</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="fragment fade-up" data-auto-animate-delay="0.2" style="text-align: left; font-size: 25px">- Constantly growing</p>
+                                <p class="fragment fade-up" data-auto-animate-delay="0.2" style="text-align: left; font-size: 25px">- 120M+ tweets</p>
+                                <p class="fragment fade-up" data-auto-animate-delay="0.2" style="text-align: left; font-size: 25px">- Two virtual machines ensure we have no data outages</p>
+                            </div>
+
+                        </div> 
+
+                        <!-- NOTES -->
+                        <aside class="notes">
+                            <ul>
+                                <li> Employ a snowball sampling technique to create a list of over 70 keywords related to covid-19 and vaccines </li>
+                                <li>There are many, however, over 95% of our tweets so far include the first three words highlighted in red</li>
+                                <li>We then set up a real=time Twitter stream that downloads any tweet containing any of these keywords - beginning on January 4th</li>
+                                <li>This means we have:</li>
+                                    <ul>
+                                        <li>Constanty growing</li>
+                                        <li>120M+ tweets</li>
+                                        <li>To ensure no gaps in data, we’ve set up two virtual machines in different geographical locations that collect the exact same data</li>
+                                    </ul>
+                            </ul>
+                        </aside>
+
+                    </section>
+
+                </section>
+                <section>
+                    <div class="r-vstack">
+                        <div>
+                            <h4>Thank you!</h4>
+                            <img src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/simpsons_thank_you.gif">
+                        </div>
+
+                         <div class="v-hstack" style="text-align:left;">
+                            <p style="font-size:12px;">- Twitter: 
+                                <a style="color:#4c42bd;" target=_blank href="https://twitter.com/mdeverna2"> 
+                                    <u>@mdeverna2</u>
+                                </a>
+                            </p>
+
+                            <p style="font-size:12px; color:black ">- Email: 
+                                <a style="color:#4c42bd;" target=_blank href="mailto:mdeverna@iu.edu">
+                                    <u>mdeverna@iu.edu</u>
+                                </a>    
+                            </p>
+
+                            <p style="font-size:12px; color:black ">- Site: 
+                                <a style="color:#4c42bd;" target=_blank href="https://www.matthewdeverna.com/">
+                                    <u>matthewdeverna.com</u>
+                                </a>    
+                            </p>
+
+                        </div>
+
+                        <div class="r-hstack">
+                            <div>
+                                <p> 
+                                    <a style="font-size: 14px; color:#4c42bd;" href="https://osome.iu.edu/tools/covaxxy" target=_blank>
+                                        <u>CoVaxxy  dashboard</u>
+                                    </a>
+                                </p>
+                                <img style="width: 150px; height: 150px" src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/covaxxy_qrcode.png">
+                            </div>
+
+                            <div>
+                                <p>
+                                    <a style="font-size: 14px; color:#4c42bd;" href="https://arxiv.org/abs/2101.07694v1" target=_blank> 
+                                        <u>Data collection paper</u>
+                                    </a>
+                                </p>
+                                <img style="width: 150px; height: 150px" src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/data_collection_qrcode.png">
+                            </div>
+
+                            <div>
+                                <p> 
+                                    <a style="font-size: 14px; color:#4c42bd;"href="https://arxiv.org/abs/2101.07694v1" target=_blank>
+                                        <u>Vaccine hesitancy <em>preprint</em></u>
+                                    </a>
+                                </p>
+                                <img style="width: 150px; height: 150px" src="https://raw.githubusercontent.com/mr-devs/ICWSM_2021_CoVaxxy_Demo/main/photos/hesitancy_qrcode.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class=notes>
+                        <ul>
+                            <li>CySoc for having me speak</li>
+                            <li>Everyone for coming to the demo</li>
+                            <li>OSoMe and Fil</li>
+                        </ul>
+                    </aside>
+                </section>
+            </div>
+        </div>
+
+        <!-- Set up reveal.js and plugins -->
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+            });
+            // This line includes the 'c'ount and 't'otal
+            // number of slides in the bottom right of the presentation
+            Reveal.initialize({ slideNumber: 'c/t' });
+        </script>
+    </body>
+</html>
